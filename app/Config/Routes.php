@@ -36,6 +36,15 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/login', 'Auth::index');
+$routes->get('/auth/check', 'Auth::check');
+$routes->get('/dashboard', 'Home::dashboard');
+$routes->get('/admin', 'Admin::index');
+$routes->get('/admin/kelola-member', 'Admin::kelolaMember');
+$routes->get('/admin/detail_user/([\w\d\-]+)', 'Admin::user_detail/$1');
+$routes->get('/admin/edit_user/([\w\d\-]+)', 'Admin::user_edit/$1');
+$routes->get('/member', 'Member::index');
+$routes->get('/logout', 'Auth::logout');
 
 /*
  * --------------------------------------------------------------------

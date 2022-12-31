@@ -16,7 +16,6 @@
 .app-brand-text.demo {
   font-size: 1.75rem;
   letter-spacing: -0.5px;
-  text-transform: lowercase;
 }
 
 /* ! For .layout-navbar-fixed added fix padding top tpo .layout-page */
@@ -104,4 +103,19 @@
 .layout-demo-info {
   text-align: center;
   margin-top: 1rem;
+}
+
+.bg-membership-one{
+  background-color: #D7C0AE !important;
+  color: #594545 !important;
+}
+
+.bg-membership-one-plus{
+  background-color: #B7C4CF !important;
+  color: #65647C !important;
+}
+
+.bg-membership-one-ultra{
+  background-color: #FAEAB1 !important;
+  color: #C58940 !important;
 }

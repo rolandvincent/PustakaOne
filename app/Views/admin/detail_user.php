@@ -5,8 +5,7 @@
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
 
-  Dashboard
-  <!--/ Layout Demo -->
+
 </div>
 <!-- / Content -->
 <?= $this->endSection() ?>
