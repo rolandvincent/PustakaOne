@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\BukuModel;
 use App\Models\MembershipModel;
 use App\Models\UserModel;
 
@@ -9,10 +10,12 @@ class Admin extends BaseController
 {
     protected $userModel;
     protected $membershipModel;
+    protected $bukuModel;
     public function __construct()
     {
         $this->userModel = new UserModel();
         $this->membershipModel = new MembershipModel();
+        $this->bukuModel = new BukuModel();
         helper('converter');
     }
 
@@ -248,6 +251,22 @@ class Admin extends BaseController
                     'required' => "{field} harus di isi!",
                     'min_length' => "{field} minimal 4 karakter"
                 ]
+            ],
+            "new_password" => [
+                'label' => "Password Baru",
+                'rules' => "required|min_length[8]",
+                'errors' => [
+                    'required' => "{field} harus di isi!",
+                    'min_length' => "{field} minimal 8 karakter"
+                ]
+            ],
+            "confirm_password" => [
+                'label' => "Password Konfirmasi",
+                'rules' => "required|matches[new_password]",
+                'errors' => [
+                    'required' => "{field} harus di isi!",
+                    'matches' => "{field} harus sama dengan Password Baru"
+                ]
             ]
         ];
         if ($this->request->getFile("avatar")->isFile()) {
@@ -279,6 +298,7 @@ class Admin extends BaseController
                 'nama' => $this->request->getPost("nama"),
                 'username' => $this->request->getPost("username"),
                 'email' => $this->request->getPost("email"),
+                'password' => password_hash($this->request->getPost("new_password"), PASSWORD_BCRYPT),
                 'role' => strpos($continue, 'member') ? 2 : 1,
                 'TTGL' => $this->request->getPost("TTGL"),
                 'no_telp' => $this->request->getPost("no_telp"),
@@ -317,5 +337,183 @@ class Admin extends BaseController
             "pager" => $this->userModel->pager
         ];
         return view('admin/kelola_pustakawan', $data);
+    }
+
+    public function kelolaBuku()
+    {
+        $cari = $this->request->getGet('s');
+        $buku = [];
+        if ($cari) {
+            $buku = $this->bukuModel->like('judul', $cari)->paginate(5, 'buku');
+        } else {
+            $buku = $this->bukuModel->paginate(5, 'buku');
+        }
+        $data = [
+            "user" => $this->userModel->find(session()->get('user_id')),
+            "buku" => $buku,
+            "title" => "Kelola Buku",
+            "pager" => $this->bukuModel->pager
+        ];
+        return view('admin/kelola_buku', $data);
+    }
+
+    public function buku_add()
+    {
+        $user = $this->userModel->find(session()->get('user_id'));
+        $data = [
+            'title' => "Tambah Buku",
+            'user' => $user,
+            "validation" => \Config\Services::validation()
+        ];
+        return view('admin/add_buku', $data);
+    }
+
+    public function buku_add_apply()
+    {
+        if (!$this->validate([
+            "judul" => [
+                'label' => "Judul",
+                'rules' => "required",
+                'errors' => [
+                    'required' => "{field} harus di isi!"
+                ]
+            ],
+            "penulis" => [
+                'label' => "Penulis",
+                'rules' => "required",
+                'errors' => [
+                    'required' => "{field} harus di isi!"
+                ]
+            ],
+            "tahun_terbit" => [
+                'label' => "Tahun Terbit",
+                'rules' => "permit_empty|numeric",
+                'errors' => [
+                    'numeric' => '{field} harus angka'
+                ]
+            ],
+            "bahasa" => [
+                'label' => "Bahasa",
+                'rules' => "required",
+                'errors' => [
+                    'required' => "{field} harus di isi!"
+                ]
+            ],
+            "count" => [
+                'label' => "Jumlah tersedia",
+                'rules' => "required|numeric",
+                'errors' => [
+                    'required' => "{field} harus di isi!",
+                    'numeric' => '{field} harus angka'
+                ]
+            ],
+        ])) {
+            return redirect()->to("/admin/add/buku")->withInput();
+        } else {
+            $sampul_name = "";
+            if ($this->request->getFile("sampul")->isFile()) {
+                $sampul = $this->request->getFile('sampul');
+                $sampul_name = $sampul->getRandomName();
+                $sampul->move('img/sampul', $sampul_name);
+            }
+            $new_book = $this->request->getPost();
+            $new_book['img_sampul'] = $sampul_name;
+            $this->bukuModel->insert($new_book);
+            session()->setFlashdata("message", "Berhasil menambah buku");
+            session()->setFlashdata("type", "success");
+            return redirect()->to('/admin/kelola-buku');
+        }
+    }
+
+    public function detail_buku($id)
+    {
+        $user = $this->userModel->find(session()->get('user_id'));
+        $data = [
+            'title' => "Detail Buku",
+            'user' => $user,
+        ];
+        return view('admin/detail_buku', $data);
+    }
+
+    public function edit_buku($id)
+    {
+        $user = $this->userModel->find(session()->get('user_id'));
+        $data = [
+            'title' => "Ubah Buku",
+            'user' => $user,
+            'buku' => $this->bukuModel->find($id),
+            "validation" => \Config\Services::validation()
+        ];
+        return view('admin/edit_buku', $data);
+    }
+
+    public function edit_buku_apply()
+    {
+        $id = $this->request->getPost('id');
+        if (!$id) {
+            session()->setFlashdata("message", "Gagal edit buku");
+            session()->setFlashdata("type", "danger");
+            return redirect()->to("/admin/kelola-buku");
+        }
+        if (!$this->validate([
+            "judul" => [
+                'label' => "Judul",
+                'rules' => "required",
+                'errors' => [
+                    'required' => "{field} harus di isi!"
+                ]
+            ],
+            "penulis" => [
+                'label' => "Penulis",
+                'rules' => "required",
+                'errors' => [
+                    'required' => "{field} harus di isi!"
+                ]
+            ],
+            "tahun_terbit" => [
+                'label' => "Tahun Terbit",
+                'rules' => "permit_empty|numeric",
+                'errors' => [
+                    'numeric' => '{field} harus angka'
+                ]
+            ],
+            "bahasa" => [
+                'label' => "Bahasa",
+                'rules' => "required",
+                'errors' => [
+                    'required' => "{field} harus di isi!"
+                ]
+            ],
+            "count" => [
+                'label' => "Jumlah tersedia",
+                'rules' => "required|numeric",
+                'errors' => [
+                    'required' => "{field} harus di isi!",
+                    'numeric' => '{field} harus angka'
+                ]
+            ],
+        ])) {
+            return redirect()->to("/admin/edit/buku/$id")->withInput();
+        } else {
+            if ($this->request->getFile("sampul")->isFile()) {
+                $sampul = $this->request->getFile('sampul');
+                $sampul_name = $sampul->getRandomName();
+                $sampul->move('img/sampul', $sampul_name);
+                $this->bukuModel->updateSampul($id, $sampul_name);
+            }
+            $edit_book = $this->request->getPost();
+            $this->bukuModel->update($id, $edit_book);
+            session()->setFlashdata("message", "Berhasil mengedit buku");
+            session()->setFlashdata("type", "success");
+            return redirect()->to('/admin/kelola-buku');
+        }
+    }
+
+    public function hapus_buku($id)
+    {
+        $this->bukuModel->remove_book($id);
+        session()->setFlashdata("message", "Berhasil menghapus buku");
+        session()->setFlashdata("type", "success");
+        return redirect()->to('/admin/kelola-buku');
     }
 }

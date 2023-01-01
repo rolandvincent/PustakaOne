@@ -130,6 +130,29 @@
                             <div data-i18n="Analytics">Daftar Transaksi</div>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon fa-solid fa-receipt"></i>
+                            <div data-i18n="Daftar Pinjam">Daftar Pinjam</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="/admin/pinjam/statistik" class="menu-link">
+                                    <div data-i18n="Statistik">Statistik</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="/admin/pinjam/riwayat" class="menu-link">
+                                    <div data-i18n="Riwayat Peminjaman">Riwayat Peminjaman</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="/admin/pinjam/telat" class="menu-link">
+                                    <div data-i18n="Riwayat Peminjaman">Peminjaman Telat</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Profil</span>
                     </li>

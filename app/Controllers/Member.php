@@ -15,7 +15,7 @@ class Member extends BaseController
     public function index()
     {
         $data = [
-            // "user" => $this->userModel->find(session()->get("user_id")),
+            "user" => $this->userModel->find(session()->get("user_id")),
             "title" => "Dashboard Member"
         ];
         return view('dashboard/index', $data);
