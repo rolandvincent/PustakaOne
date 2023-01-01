@@ -25,7 +25,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-$routes->setAutoRoute(true);
+// $routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
@@ -37,13 +37,21 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Auth::index');
-$routes->get('/auth/check', 'Auth::check');
+$routes->post('/auth/check', 'Auth::check');
 $routes->get('/dashboard', 'Home::dashboard');
-$routes->get('/admin', 'Admin::index');
-$routes->get('/admin/kelola-member', 'Admin::kelolaMember');
-$routes->get('/admin/detail_user/([\w\d\-]+)', 'Admin::user_detail/$1');
-$routes->get('/admin/edit_user/([\w\d\-]+)', 'Admin::user_edit/$1');
-$routes->get('/member', 'Member::index');
+$routes->get('/admin', 'Admin::index', ['filter' => 'auth']);
+$routes->post('/admin/save', 'Admin::save', ['filter' => 'auth']);
+$routes->post('/admin/add', 'Admin::add', ['filter' => 'auth']);
+$routes->get('/admin/delete', 'Admin::delete', ['filter' => 'auth']);
+$routes->get('/admin/kelola-member', 'Admin::kelolaMember', ['filter' => 'auth']);
+$routes->get('/admin/kelola-pustakawan', 'Admin::kelolaPustakawan', ['filter' => 'auth']);
+$routes->get('/admin/detail_user/([\w\d\-]+)', 'Admin::user_detail/$1', ['filter' => 'auth']);
+$routes->get('/admin/edit_user', 'Admin::user_edit', ['filter' => 'auth']);
+$routes->get('/admin/add_user', 'Admin::user_add', ['filter' => 'auth']);
+$routes->get('/member', 'Member::index', ['filter' => 'auth']);
+$routes->get('/profil/edit', 'Member::edit_profile', ['filter' => 'auth']);
+$routes->get('/profil/edit-password', 'Member::change_password', ['filter' => 'auth']);
+$routes->post('/profil/edit-password', 'Member::apply_password', ['filter' => 'auth']);
 $routes->get('/logout', 'Auth::logout');
 
 /*

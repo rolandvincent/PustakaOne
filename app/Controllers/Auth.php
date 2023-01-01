@@ -52,6 +52,7 @@ class Auth extends BaseController
             }
 
             session()->setFlashdata("message", "Pengguna atau password salah!");
+            session()->setFlashdata("type", "danger");
             return redirect()->to('/login')->withInput();
         }
     }

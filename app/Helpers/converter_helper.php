@@ -14,7 +14,7 @@ function Membership($id)
 function MembershipCSS($id)
 {
     $membership = [
-        0 => "text-bg-dark",
+        0 => "bg-membership-none",
         1 => "bg-membership-one",
         2 => "bg-membership-one-plus",
         3 => "bg-membership-one-ultra"
@@ -27,4 +27,15 @@ function avatar($user)
     if ($user['avatar'] == null)
         return '/img/avatars/default.png';
     return '/img/avatars/' . $user['avatar'];
+}
+
+function sender($id)
+{
+    $sender_url = [
+        0 => "/admin/add_user",
+        1 => "/admin/edit_user",
+        2 => "/admin/edit_buku",
+        3 => "/admin/edit_profil",
+    ];
+    return $sender_url[$id];
 }

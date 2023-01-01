@@ -119,3 +119,8 @@
   background-color: #FAEAB1 !important;
   color: #C58940 !important;
 }
+
+.bg-membership-none{
+  background-color: #333 !important;
+  color: #eee !important;
+}

@@ -82,7 +82,7 @@
               <h4 class="mb-2">Selamat datang di PustakaONE</h4>
               <p class="mb-4">Silakan masuk dengan akun yang sudah terdaftar!</p>
               <?php if (session()->getFlashdata("message")) : ?>
-              <div class="alert alert-danger" role="alert"><?= session()->getFlashdata("message"); ?></div>
+                <div class="alert alert-<?= session()->getFlashdata("type"); ?>" role="alert"><?= session()->getFlashdata("message"); ?></div>
               <?php endif; ?>
               <form id="formAuthentication" class="mb-3" action="/auth/check" method="POST">
                 <div class="mb-3">
