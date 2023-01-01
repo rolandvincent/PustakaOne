@@ -53,18 +53,18 @@ class Admin extends BaseController
         return view('admin/kelola_member', $data);
     }
 
-    public function user_detail($id)
+    public function user_detail($username)
     {
-        $user = $this->userModel->where('username', $id)->first();
+        $user = $this->userModel->where('username', $username)->first();
         if ($user) {
             $data = [
-                'title' => "Detail Pengguna",
+                'title' => "Pengguna $username",
                 'user' => $this->userModel->find(session()->get('user_id')),
                 'user_select' => $user
             ];
             return view('admin/detail_user', $data);
         } else {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException("User dengan username '$id' tidak ditemukan!");
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("User dengan username '$username' tidak ditemukan!");
         }
     }
 

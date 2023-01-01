@@ -2,14 +2,17 @@
 
 namespace App\Controllers;
 
+use App\Models\MembershipModel;
 use App\Models\UserModel;
 
 class Member extends BaseController
 {
     protected $userModel;
+    protected $membershipModel;
     public function __construct()
     {
         $this->userModel = new UserModel();
+        $this->membershipModel = new MembershipModel();
     }
 
     public function index()
@@ -88,5 +91,16 @@ class Member extends BaseController
                 return redirect()->to('/profil/edit-password');
             }
         }
+    }
+
+    public function view_profile()
+    {
+        $user = $this->userModel->find(session()->get('user_id'));
+        $data = [
+            'title' => "Profil Saya",
+            'user' => $user,
+            'membership' =>  $this->membershipModel->where("user_id", $user["id"])->first()
+        ];
+        return view('admin/detail_user', $data);
     }
 }

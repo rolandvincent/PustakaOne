@@ -29,6 +29,16 @@ function avatar($user)
     return '/img/avatars/' . $user['avatar'];
 }
 
+function hak_akses($role)
+{
+    $akses = [
+        0 => "Administrator",
+        1 => "Pustakawan",
+        2 => "Member"
+    ];
+    return $akses[$role];
+}
+
 function sender($id)
 {
     $sender_url = [

@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <span class="fw-semibold d-block"><?= $user["nama"]; ?></span>
-                                    <small class="text-muted"><?= $user["role"] == 1 ? "Pustakawan" : "Member"; ?></small>
+                                    <small class="text-muted"><?= hak_akses($user["role"]); ?></small>
                                 </div>
                             </div>
                         </a>
