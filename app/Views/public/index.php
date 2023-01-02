@@ -66,19 +66,19 @@
                 <ul class="movies-list  has-scrollbar">
                     <?php foreach ($popular as $buku) : ?>
                         <li>
-                            <div class="movie-card">
+                            <div class="movie-card" style="justify-content: unset;">
                                 <a href="detail/<?= $buku['id']; ?>">
                                     <figure class="card-banner">
                                         <img src="/img/sampul/<?= $buku['img_sampul']; ?>" alt="buku 1">
                                     </figure>
                                 </a>
-                                <div class="title-wrapper">
+                                <div class="title-wrapper mb-0">
                                     <a href="detail/<?= $buku['id']; ?>">
-                                        <h3 class="card-title"><?= $buku['judul']; ?></h3>
+                                        <h3 class="card-title text-warning"><?= $buku['judul']; ?></h3>
                                     </a>
                                 </div>
                                 <div class="card-meta">
-                                    <div class="badge badge-outline"><?= $buku['penulis']; ?></div>
+                                    <div class="text-white"><?= $buku['penulis']; ?></div>
                                 </div>
                             </div>
                         </li>
@@ -176,7 +176,7 @@
         </section>
 
 
-        <section class="top-rated" id="daftar">
+        <section class="top-rated" id="peta">
             <div class="container">
                 <h1 class="text-center"><i class="fa-solid fa-location-dot text-warning"></i></h1>
 
@@ -204,19 +204,19 @@
                 <ul class="movies-list">
                     <?php foreach ($daftar_buku as $buku) : ?>
                         <li>
-                            <div class="movie-card">
+                            <div class="movie-card" style=" justify-content: unset;">
                                 <a href="/detail/<?= $buku['id']; ?>">
-                                    <figure class="card-banner">
+                                    <figure class="card-banner" style="align-content: flex-start;">
                                         <img src="/img/sampul/<?= $buku['img_sampul']; ?>" alt="buku ">
                                     </figure>
                                 </a>
-                                <div class="title-wrapper">
+                                <div class="title-wrapper mb-0">
                                     <a href="/detail/<?= $buku['id']; ?>">
-                                        <h3 class="card-title"><?= $buku['judul']; ?></h3>
+                                        <h3 class="card-title text-warning"><?= $buku['judul']; ?></h3>
                                     </a>
                                 </div>
-                                <div class="card-meta">
-                                    <div class="badge badge-outline"><?= $buku['penulis']; ?></div>
+                                <div class="card-meta mt-0">
+                                    <div class="text-light"><?= $buku['penulis']; ?></div>
                                 </div>
                             </div>
                         </li>
@@ -246,27 +246,22 @@
                     <li>
                         <div class="movie-card">
 
-                            <a href="./movie-details.html">
+                            <a href="javascript:void(0)">
                                 <figure class="card-banner">
                                     <img src="./assets/images/faiz.jpg" alt="Nama">
                                 </figure>
                             </a>
 
-                            <div class="title-wrapper" style="text-align:center;">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Muhammad Faiz Bachrul Akbar</h3>
-                                    <br>
-                                    <h3 class="card-title">Pustakawan</h3>
-                                    <br>
+                            <div class="title-wrapper" style="text-align: center; flex-direction: column;">
+                                <a href="javascript:void(0)">
+                                    <h3 class="card-title text-warning fw-bold">Muhammad Faiz Bachrul Akbar</h3>
+                                    <h3 class="card-title text-muted">Pustakawan</h3>
                                     <h3 class="card-title">1910631170209</h3>
-                                    <br>
                                     <h3 class="card-title">1910631170209@student.unsika.ac.id</h3>
                                 </a>
                             </div>
 
-                            <div class="card-meta">
-                                <div class="badge badge-outline">-------------------------------------------</div>
-                            </div>
+
 
                         </div>
                     </li>
@@ -274,82 +269,58 @@
                     <li>
                         <div class="movie-card">
 
-                            <a href="./movie-details.html">
+                            <a href="javascript:void(0)">
                                 <figure class="card-banner">
                                     <img src="./assets/images/vincent.jpg" alt="Nama">
                                 </figure>
                             </a>
 
-                            <div class="title-wrapper" style="text-align:center;">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Roland Vincent Sitanggang</h3>
-                                    <br>
-                                    <h3 class="card-title">Pustakawan</h3>
-                                    <br>
+                            <div class="title-wrapper" style="text-align: center; flex-direction: column;">
+                                <a href="javascript:void(0)">
+                                    <h3 class="card-title text-warning fw-bold">Roland Vincent Sitanggang</h3>
+                                    <h3 class="card-title text-muted">Pustakawan</h3>
                                     <h3 class="card-title">1910631170131</h3>
-                                    <br>
                                     <h3 class="card-title">1910631170131@student.unsika.ac.id</h3>
                                 </a>
                             </div>
-
-                            <div class="card-meta">
-                                <div class="badge badge-outline">-------------------------------------------</div>
-                            </div>
-
                         </div>
                     </li>
                     <li>
                         <div class="movie-card">
 
-                            <a href="./movie-details.html">
+                            <a href="javascript:void(0)">
                                 <figure class="card-banner">
                                     <img src="./assets/images/rizky.jpg" alt="Nama">
                                 </figure>
                             </a>
 
-                            <div class="title-wrapper" style="text-align:center;">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Rizqy Arya Pratama</h3>
-                                    <br>
-                                    <h3 class="card-title">Pustakawan</h3>
-                                    <br>
+                            <div class="title-wrapper" style="text-align: center; flex-direction: column;">
+                                <a href="javascript:void(0)">
+                                    <h3 class="card-title text-warning fw-bold">Rizqy Arya Pratama</h3>
+                                    <h3 class="card-title text-muted">Pustakawan</h3>
                                     <h3 class="card-title">1910631170130</h3>
-                                    <br>
                                     <h3 class="card-title">1910631170130@student.unsika.ac.id</h3>
                                 </a>
                             </div>
-
-                            <div class="card-meta">
-                                <div class="badge badge-outline">-------------------------------------------</div>
-                            </div>
-
                         </div>
                     </li>
                     <li>
                         <div class="movie-card">
 
-                            <a href="./movie-details.html">
+                            <a href="javascript:void(0)">
                                 <figure class="card-banner">
                                     <img src="./assets/images/riki.jpg" alt="Nama">
                                 </figure>
                             </a>
 
-                            <div class="title-wrapper" style="text-align:center;">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Riky Priatna Kurniawan</h3>
-                                    <br>
-                                    <h3 class="card-title">Pustakawan</h3>
-                                    <br>
+                            <div class="title-wrapper" style="text-align: center; flex-direction: column;">
+                                <a href="javascript:void(0)">
+                                    <h3 class="card-title text-warning fw-bold">Riky Priatna Kurniawan</h3>
+                                    <h3 class="card-title text-muted">Pustakawan</h3>
                                     <h3 class="card-title">1910631170039</h3>
-                                    <br>
                                     <h3 class="card-title">1910631170039@student.unsika.ac.id</h3>
                                 </a>
                             </div>
-
-                            <div class="card-meta">
-                                <div class="badge badge-outline">-------------------------------------------</div>
-                            </div>
-
                         </div>
                     </li>
 
@@ -370,7 +341,7 @@
             <div class="container">
 
                 <div class="title-wrapper">
-                    <h2 class="cta-title text-center">Join Membership Sekarang</h2>
+                    <h2 class="cta-title text-center fw-bold">Join Membership Sekarang</h2>
 
                     <p class="cta-text text-center">
                         Hubungi kami melalui email yang tertera di profil kami

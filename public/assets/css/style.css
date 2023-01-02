@@ -1162,7 +1162,16 @@ body.active { overflow: hidden; }
 
 }
 
+.btn-search-mobile{
+  margin-left: 0!important;
+  background-color: white;
+}
 
+.btn-search-mobile:hover{
+  margin-left: 0!important;
+  background-color: var(--citrine);
+  transition: 0.3s;
+}
 
 
 
@@ -1206,14 +1215,22 @@ body.active { overflow: hidden; }
     display: flex;
     margin-left: auto;
     align-items: center;
-    gap: 35px;
+    gap: 20px;
   }
 
   .header-actions .btn-primary { display: none; }
 
   .search-btn {
     position: relative;
-    color: var(--white);
+    color: var(--black);
+    background-color: var(--white);
+    margin-left: 0!important;
+  }
+
+  .search-btn:hover {
+    color: var(--gunmetal-1);
+    background-color: var(--citrine);
+    transition: 0.2s;
   }
 
   .search-btn ion-icon { --ionicon-stroke-width: 80px; }
@@ -1535,8 +1552,9 @@ body.active { overflow: hidden; }
 
   .header-actions .btn-primary {
     display: block;
+    width: 150px;
     --fs-11: 14px;
-    padding: 10px 35px;
+    padding: 10px 5px;
     letter-spacing: 1px;
   }
 

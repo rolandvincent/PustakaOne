@@ -87,9 +87,9 @@
 
             <div class="header-actions">
 
-                <form action="/search" method="GET" class="search-bar" style="white-space: nowrap;">
-                    <input class="form-control-sm d-inline-block  w-auto" type="text" name="s" required>
-                    <button class="search-btn d-inline-block ms-1 me-3" type="submit">
+                <form action="/search" method="GET" class="search-bar input-group w-auto" style="white-space: nowrap;">
+                    <input class="form-control-sm d-inline-block w-auto" placeholder="Search" type="text" name="s" required>
+                    <button class="search-btn d-inline-block ms-1 me-3 form-control-sm" type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </form>
@@ -126,6 +126,14 @@
                     </button>
 
                 </div>
+                <div class="navbar-top">
+                    <form action="/search" method="GET" class="search-bar input-group" style="white-space: nowrap;">
+                        <input class="form-control-sm d-inline-block w-auto" placeholder="Search" type="text" name="s" required>
+                        <button class="search-btn d-inline-block ms-1 me-3 form-control-sm btn-search-mobile" type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>
 
                 <ul class="navbar-list">
 
@@ -145,38 +153,21 @@
                     <li>
                         <a href="/#pustakawan" class="navbar-link">Pustakawan</a>
                     </li>
-
                 </ul>
+
+
 
                 <ul class="navbar-social-list">
 
                     <li>
-                        <a href="/#" class="navbar-social-link">
-                            <ion-icon name="logo-twitter"></ion-icon>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="/#" class="navbar-social-link">
-                            <ion-icon name="logo-facebook"></ion-icon>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="/#" class="navbar-social-link">
-                            <ion-icon name="logo-pinterest"></ion-icon>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="/#" class="navbar-social-link">
-                            <ion-icon name="logo-instagram"></ion-icon>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="/#" class="navbar-social-link">
+                        <a href="https://www.youtube.com" class="navbar-social-link">
                             <ion-icon name="logo-youtube"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://github.com/rolandvincent/PustakaOne" class="navbar-social-link">
+                            <ion-icon name="logo-github"></ion-icon>
                         </a>
                     </li>
 
@@ -199,11 +190,17 @@
         <div class="footer-top">
             <div class="container">
 
-                <div class="footer-brand-wrapper">
+                <div class="footer-brand-wrapper" style="justify-content: flex-start;">
 
                     <a href="/#" class="logo">
                         <img src="/assets/images/logo_p.png" alt="PustakaOne logo">
                     </a>
+                    <div>
+                        <h2 class="text-light ms-2">Pustaka<span class="text-warning d-inline fw-bold">ONE</span></h2>
+                        <h6 class="text-light ms-2">&copy; 2023 PustakaONE. All Rights Reserved</h6>
+                    </div>
+
+
                 </div>
 
                 <div class="divider"></div>
@@ -233,26 +230,14 @@
                     <ul class="social-list">
 
                         <li>
-                            <a href="/#" class="social-link">
-                                <ion-icon name="logo-facebook"></ion-icon>
+                            <a href="https://youtube.com" class="social-link">
+                                <ion-icon name="logo-youtube"></ion-icon>
                             </a>
                         </li>
 
                         <li>
-                            <a href="/#" class="social-link">
-                                <ion-icon name="logo-twitter"></ion-icon>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/#" class="social-link">
-                                <ion-icon name="logo-pinterest"></ion-icon>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/#" class="social-link">
-                                <ion-icon name="logo-linkedin"></ion-icon>
+                            <a href="https://github.com/rolandvincent/PustakaOne" class="social-link">
+                                <ion-icon name="logo-github"></ion-icon>
                             </a>
                         </li>
 
@@ -267,7 +252,7 @@
             <div class="container">
 
                 <p class="copyright">
-                    &copy; 2022 <a href="/#">uasfremeworkweb</a>. All Rights Reserved
+                    &copy; 2023 PustakaONE. All Rights Reserved
                 </p>
             </div>
         </div>
