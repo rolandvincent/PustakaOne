@@ -51,6 +51,8 @@ $routes->get('/admin/detail_user/([\w\d\-]+)', 'Admin::user_detail/$1', ['filter
 $routes->get('/admin/edit_user', 'Admin::user_edit', ['filter' => 'admin']);
 $routes->get('/admin/edit/buku/(:num)', 'Admin::edit_buku/$1', ['filter' => 'admin']);
 $routes->post('/admin/edit/buku', 'Admin::edit_buku_apply', ['filter' => 'admin']);
+$routes->get('/admin/change/membership/(:any)', 'Admin::changeMembership/$1', ['filter' => 'admin']);
+$routes->post('/admin/change/membership', 'Admin::changeMembership_apply', ['filter' => 'admin']);
 $routes->get('/admin/add_user', 'Admin::user_add', ['filter' => 'admin']);
 $routes->get('/admin/add/buku', 'Admin::buku_add', ['filter' => 'admin']);
 $routes->post('/admin/add/buku', 'Admin::buku_add_apply', ['filter' => 'admin']);

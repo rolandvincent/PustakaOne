@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\BukuModel;
 use App\Models\MembershipModel;
+use App\Models\PinjamModel;
 use App\Models\UserModel;
 
 class Admin extends BaseController
@@ -11,11 +12,13 @@ class Admin extends BaseController
     protected $userModel;
     protected $membershipModel;
     protected $bukuModel;
+    protected $pinjamModel;
     public function __construct()
     {
         $this->userModel = new UserModel();
         $this->membershipModel = new MembershipModel();
         $this->bukuModel = new BukuModel();
+        $this->pinjamModel = new PinjamModel();
         helper('converter');
     }
 
@@ -41,7 +44,7 @@ class Admin extends BaseController
         }
 
         for ($i = 0; $i < count($members); $i++) {
-            $membership = $this->membershipModel->where("user_id", $members[$i]["id"])->first();
+            $membership = $this->userModel->getMembershipFromUserId($members[$i]["id"]);
             $members[$i]["membership"] = $membership ? $membership["jenis"] : 0;
         }
         $data = [
@@ -55,12 +58,14 @@ class Admin extends BaseController
 
     public function user_detail($username)
     {
-        $user = $this->userModel->where('username', $username)->first();
-        if ($user) {
+        $user_select = $this->userModel->where('username', $username)->first();
+        if ($user_select) {
+            $user = $this->userModel->find(session()->get('user_id'));
             $data = [
-                'title' => "Pengguna $username",
-                'user' => $this->userModel->find(session()->get('user_id')),
-                'user_select' => $user
+                'title' => "Profile Pengguna",
+                'user' => $user,
+                'user_select' => $user_select,
+                'membership' =>  $this->userModel->getMembershipFromUserId($user_select["id"])
             ];
             return view('admin/detail_user', $data);
         } else {
@@ -515,5 +520,39 @@ class Admin extends BaseController
         session()->setFlashdata("message", "Berhasil menghapus buku");
         session()->setFlashdata("type", "success");
         return redirect()->to('/admin/kelola-buku');
+    }
+
+    public function changeMembership($username)
+    {
+        $user_select = $this->userModel->where('username', $username)->first();
+        $membership = $this->userModel->getMembershipFromUserId($user_select['id']);
+        $data = [
+            'title' => "Ubah Membership",
+            'user' => $this->userModel->find(session()->get('user_id')),
+            'user_select' => $user_select,
+            'membership' => $membership,
+            'loan' => $membership ? $this->pinjamModel->getLoan($membership['id']) : []
+        ];
+        return view('admin/change_membership', $data);
+    }
+
+    public function changeMembership_apply()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $user_id = $this->request->getPost('id');
+        $jenis = $this->request->getPost('jenis_member');
+        if ($user_id) {
+            $id_membership = $this->membershipModel->insert([
+                'user_id' => $user_id,
+                'jenis' => $jenis,
+                'status' => 1,
+                'date_start' => date('Y-m-d H:i:s'),
+                'remaining_loan' => membershipUsageLimit($jenis)
+            ], true);
+            $this->userModel->update($user_id, [
+                'id_membership' => $id_membership
+            ]);
+        }
+        return redirect()->to('/admin/kelola-member');
     }
 }

@@ -102,14 +102,14 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="new_password" class="form-label">Password Baru</label>
-                                <input type="text" class="form-control <?= $validation->hasError("new_password") ? "is-invalid" : ""; ?>" id="new_password" name="new_password" placeholder="********" />
+                                <input type="password" class="form-control <?= $validation->hasError("new_password") ? "is-invalid" : ""; ?>" id="new_password" name="new_password" placeholder="********" />
                                 <div class="invalid-feedback">
                                     <?= $validation->getError("new_password"); ?>
                                 </div>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="confirm_password" class="form-label">Ulangi Password Baru</label>
-                                <input type="text" class="form-control <?= $validation->hasError("confirm_password") ? "is-invalid" : ""; ?>" id="confirm_password" name="confirm_password" placeholder="********" />
+                                <input type="password" class="form-control <?= $validation->hasError("confirm_password") ? "is-invalid" : ""; ?>" id="confirm_password" name="confirm_password" placeholder="********" />
                                 <div class="invalid-feedback">
                                     <?= $validation->getError("confirm_password"); ?>
                                 </div>

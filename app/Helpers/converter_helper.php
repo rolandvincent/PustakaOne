@@ -1,4 +1,5 @@
 <?php
+define('SECOND_OF_DAY', 86400);
 
 function Membership($id)
 {
@@ -18,6 +19,17 @@ function MembershipCSS($id)
         1 => "bg-membership-one",
         2 => "bg-membership-one-plus",
         3 => "bg-membership-one-ultra"
+    ];
+    return $membership[$id];
+}
+
+function membershipUsageLimit($id)
+{
+    $membership = [
+        0 => 0,
+        1 => 4,
+        2 => 10,
+        3 => 25
     ];
     return $membership[$id];
 }
