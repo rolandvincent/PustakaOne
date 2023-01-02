@@ -941,7 +941,7 @@ body.active { overflow: hidden; }
 \*-----------------------------------*/
 
 .movie-detail {
-  background: url("../images/movie-detail-bg.png") no-repeat;
+  background: url("../images/footer-bg.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   padding-top: 160px;
@@ -959,9 +959,17 @@ body.active { overflow: hidden; }
 }
 
 .movie-detail-banner img {
-  width: 100%;
-  height: 100%;
+  width: 250px;
+  height: 350px;
   object-fit: cover;
+}
+
+.storyline .label {
+  font-size: larger;
+}
+
+.storyline .value {
+  margin-left: 10px;
 }
 
 .play-btn {

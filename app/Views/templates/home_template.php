@@ -1,3 +1,4 @@
+<?php  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,23 +13,58 @@
   -->
     <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
 
-    <!-- 
-    - custom css link
-  -->
-    <link rel="stylesheet" href="./assets/css/style.css">
 
     <!-- 
-    - google font link
-  -->
+        - google font link
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- caribuku -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- 
+        - custom css link
+    -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+
+    <style>
+        #hasil_cari {
+            padding-top: 200px;
+            background: #333;
+            color: white;
+        }
+
+        table img {
+            width: 100px;
+        }
+
+        #example_filter label {
+            font-weight: normal;
+            white-space: nowrap;
+            text-align: left;
+            display: inline-block;
+        }
+
+        #example_filter input {
+            margin-left: 0.5em;
+            display: inline-block;
+            width: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body id="top">
 
     <!-- 
-    - #HEADER
+    - /#HEADER
   -->
 
     <header class="header" data-header>
@@ -36,7 +72,7 @@
 
             <div class="overlay" data-overlay></div>
 
-            <a href="/" class="logo">
+            <a href="/#" class="logo">
                 <img src="./assets/images/logo_p.png" alt="PustakaOne logo" style="height: 80px; weight: 80px;">
             </a>
 
@@ -60,7 +96,7 @@
                     </select>
                 </div>
 
-                <button class="btn btn-primary">Sign in</button>
+                <a href="/login" class="btn btn-primary">Sign in</a>
 
             </div>
 
@@ -85,20 +121,20 @@
                 <ul class="navbar-list">
 
                     <li>
-                        <a href="#" class="navbar-link">Beranda</a>
+                        <a href="/#" class="navbar-link">Beranda</a>
                     </li>
 
                     <li>
-                        <a href="#about" class="navbar-link">Tentang PustakaOne</a>
+                        <a href="/#about" class="navbar-link">Tentang PustakaOne</a>
                     </li>
 
                     <li>
-                        <a href="#daftar" class="navbar-link">Daftar Buku</a>
+                        <a href="/#daftar" class="navbar-link">Daftar Buku</a>
                     </li>
 
 
                     <li>
-                        <a href="#pustakawan" class="navbar-link">Pustakawan</a>
+                        <a href="/#pustakawan" class="navbar-link">Pustakawan</a>
                     </li>
 
                 </ul>
@@ -106,31 +142,31 @@
                 <ul class="navbar-social-list">
 
                     <li>
-                        <a href="#" class="navbar-social-link">
+                        <a href="/#" class="navbar-social-link">
                             <ion-icon name="logo-twitter"></ion-icon>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-social-link">
+                        <a href="/#" class="navbar-social-link">
                             <ion-icon name="logo-facebook"></ion-icon>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-social-link">
+                        <a href="/#" class="navbar-social-link">
                             <ion-icon name="logo-pinterest"></ion-icon>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-social-link">
+                        <a href="/#" class="navbar-social-link">
                             <ion-icon name="logo-instagram"></ion-icon>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-social-link">
+                        <a href="/#" class="navbar-social-link">
                             <ion-icon name="logo-youtube"></ion-icon>
                         </a>
                     </li>
@@ -146,7 +182,7 @@
     <?= $this->renderSection('content'); ?>
 
     <!-- 
-    - #FOOTER
+    - /#FOOTER
   -->
 
     <footer class="footer">
@@ -156,34 +192,9 @@
 
                 <div class="footer-brand-wrapper">
 
-                    <a href="#" class="logo">
+                    <a href="/#" class="logo">
                         <img src="./assets/images/logo_p.png" alt="PustakaOne logo">
                     </a>
-
-                    <ul class="footer-list">
-
-                        <li>
-                            <a href="./index.html" class="footer-link">Home</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="footer-link">Daftar Buku</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="footer-link">Info Perpustakaan</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="footer-link">Pustakawan</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="footer-link">Tentang PustakaOne</a>
-                        </li>
-
-                    </ul>
-
                 </div>
 
                 <div class="divider"></div>
@@ -193,19 +204,19 @@
                     <ul class="quicklink-list">
 
                         <li>
-                            <a href="#" class="quicklink-link">Faq</a>
+                            <a href="/#" class="quicklink-link">Faq</a>
                         </li>
 
                         <li>
-                            <a href="#" class="quicklink-link">Help center</a>
+                            <a href="/#" class="quicklink-link">Help center</a>
                         </li>
 
                         <li>
-                            <a href="#" class="quicklink-link">Terms of use</a>
+                            <a href="/#" class="quicklink-link">Terms of use</a>
                         </li>
 
                         <li>
-                            <a href="#" class="quicklink-link">Privacy</a>
+                            <a href="/#" class="quicklink-link">Privacy</a>
                         </li>
 
                     </ul>
@@ -213,25 +224,25 @@
                     <ul class="social-list">
 
                         <li>
-                            <a href="#" class="social-link">
+                            <a href="/#" class="social-link">
                                 <ion-icon name="logo-facebook"></ion-icon>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#" class="social-link">
+                            <a href="/#" class="social-link">
                                 <ion-icon name="logo-twitter"></ion-icon>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#" class="social-link">
+                            <a href="/#" class="social-link">
                                 <ion-icon name="logo-pinterest"></ion-icon>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#" class="social-link">
+                            <a href="/#" class="social-link">
                                 <ion-icon name="logo-linkedin"></ion-icon>
                             </a>
                         </li>
@@ -247,7 +258,7 @@
             <div class="container">
 
                 <p class="copyright">
-                    &copy; 2022 <a href="#">uasfremeworkweb</a>. All Rights Reserved
+                    &copy; 2022 <a href="/#">uasfremeworkweb</a>. All Rights Reserved
                 </p>
             </div>
         </div>
@@ -259,10 +270,10 @@
 
 
     <!-- 
-- #GO TO TOP
+- /#GO TO TOP
 -->
 
-    <a href="#top" class="go-top" data-go-top>
+    <a href="/#top" class="go-top" data-go-top>
         <ion-icon name="chevron-up"></ion-icon>
     </a>
 
@@ -280,6 +291,13 @@
 -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
 
