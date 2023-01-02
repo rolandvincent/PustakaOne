@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class UserModel extends Model
 {
     protected $table = 'users';
-    protected $allowedFields = ['nama', 'email', 'password', 'username', 'avatar', 'alamat', 'TTGL', 'no_telp', 'active', 'role'];
+    protected $allowedFields = ['nama', 'id_membership', 'email', 'password', 'username', 'avatar', 'alamat', 'TTGL', 'no_telp', 'active', 'role'];
     protected $useTimestamps = true;
 
     public function hapus($username)
@@ -26,5 +26,16 @@ class UserModel extends Model
             unlink('img/avatars/' . $last_avatar);
         }
         $this->update($id, ['avatar' => $avatar]);
+    }
+
+    public function getMembershipFromUserId($id)
+    {
+        if (!$id)
+            throw new \CodeIgniter\Exceptions\AlertError("Cannot get membership from user id null");
+        $user = $this->find($id);
+        if (!$user['id_membership'])
+            return null;
+        $membershipModel = new MembershipModel();
+        return $membershipModel->find($user['id_membership']);
     }
 }

@@ -48,7 +48,7 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/admin/detail_user/<?= $mem['username']; ?>"><i class="bx bx-info-circle me-1"></i> Lihat Detail</a>
-                                        <a class="dropdown-item" href="/admin/edit_membership/<?= $mem['username']; ?>"><i class="fa-regular fa-credit-card me-1"></i> Ubah membership</a>
+                                        <a class="dropdown-item" href="/admin/change/membership/<?= $mem['username']; ?>"><i class="fa-regular fa-credit-card me-1"></i> Ubah membership</a>
                                         <a class="dropdown-item" href="/admin/edit_user?username=<?= $mem['username']; ?>&continue=%2Fadmin%2Fkelola-member"><i class="bx bx-edit-alt me-1"></i> Ubah</a>
                                         <button class="dropdown-item" onclick="del_user('<?= $mem['username']; ?>')"><i class="bx bx-trash me-1"></i> Hapus</button>
                                     </div>
