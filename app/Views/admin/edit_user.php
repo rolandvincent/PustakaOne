@@ -138,7 +138,7 @@
 
             ktpInput.onchange = () => {
                 if (ktpInput.files[0]) {
-                    ktpLabel.value = window.URL.createObjectURL(ktpInput.files[0].name);
+                    ktpLabel.value = ktpInput.files[0].name;
                 }
             }
 
@@ -146,7 +146,7 @@
                 const resetImage = accountUserImage.src;
                 fileInput.onchange = () => {
                     if (fileInput.files[0]) {
-                        accountUserImage.src = fileInput.files[0];
+                        accountUserImage.src = window.URL.createObjectURL(fileInput.files[0]);
                     }
                 };
                 resetFileInput.onclick = () => {

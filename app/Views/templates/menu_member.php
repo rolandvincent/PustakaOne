@@ -98,11 +98,7 @@
             </a>
         </li>
         <li class="menu-item">
-<<<<<<< HEAD
             <a href="/profil/edit-password" class="menu-link">
-=======
-            <a href="profil/edit-password" class="menu-link">
->>>>>>> 4e75c90ab2ede8b0367159f761a73a3519df1909
                 <i class="menu-icon fa-solid fa-key"></i>
                 <div data-i18n="Analytics">Ganti Password</div>
             </a>

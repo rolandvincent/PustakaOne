@@ -102,10 +102,10 @@
 
                 <div class="service-banner">
                     <figure>
-                        <img src="./assets/images/membership.png" alt="jenis membership" style="weight: 300px; height: 600px;">
+                        <img src="./assets/images/membership.jpg" alt="jenis membership" style="weight: 300px; height: 600px;">
                     </figure>
 
-                    <a href="./assets/images/membership.png" download class="service-btn">
+                    <a href="./assets/images/membership.jpg" download class="service-btn">
                         <span>Download</span>
 
                         <ion-icon name="download-outline"></ion-icon>
