@@ -11,7 +11,7 @@
     <!-- 
     - favicon
   -->
-    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
 
 
     <!-- 
@@ -20,15 +20,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ae2a321f3f.js" crossorigin="anonymous"></script>
 
     <!-- caribuku -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
     <!-- 
         - custom css link
     -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 
     <style>
@@ -40,6 +42,13 @@
 
         table img {
             width: 100px;
+        }
+
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
         }
 
         #example_filter label {
@@ -73,15 +82,15 @@
             <div class="overlay" data-overlay></div>
 
             <a href="/#" class="logo">
-                <img src="./assets/images/logo_p.png" alt="PustakaOne logo" style="height: 80px; weight: 80px;">
+                <img src="/assets/images/logo_p.png" alt="PustakaOne logo" style="height: 80px; weight: 80px;">
             </a>
 
             <div class="header-actions">
 
-                <form action="" class="search-bar">
-                    <input type="search" name="search" pattern=".*\S.*" required>
-                    <button class="search-btn" type="submit">
-                        <span>Search</span>
+                <form action="/search" method="GET" class="search-bar" style="white-space: nowrap;">
+                    <input class="form-control-sm d-inline-block  w-auto" type="text" name="s" required>
+                    <button class="search-btn d-inline-block ms-1 me-3" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </form>
 
@@ -109,7 +118,7 @@
                 <div class="navbar-top">
 
                     <a href="/" class="logo">
-                        <img src="./assets/images/logo_p.png" alt="PustakaOne logo">
+                        <img src="/assets/images/logo_p.png" alt="PustakaOne logo">
                     </a>
 
                     <button class="menu-close-btn" data-menu-close-btn>
@@ -193,7 +202,7 @@
                 <div class="footer-brand-wrapper">
 
                     <a href="/#" class="logo">
-                        <img src="./assets/images/logo_p.png" alt="PustakaOne logo">
+                        <img src="/assets/images/logo_p.png" alt="PustakaOne logo">
                     </a>
                 </div>
 
@@ -284,7 +293,7 @@
     <!-- 
 - custom js link
 -->
-    <script src="./assets/js/script.js"></script>
+    <script src="/assets/js/script.js"></script>
 
     <!-- 
 - ionicon link
@@ -298,7 +307,7 @@
     </script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
 </body>
 
 </html>

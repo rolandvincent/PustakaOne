@@ -60,92 +60,29 @@
                         <h2 class="h2 section-title">Trending Book</h2>
                     </div>
 
-                    <ul class="filter-list">
 
-                        <li>
-                            <button class="filter-btn"></button>
-                        </li>
-
-                        <li>
-                            <button class="filter-btn"></button>
-                        </li>
-
-                        <li>
-                            <button class="filter-btn"></button>
-                        </li>
-                    </ul>
                 </div>
 
                 <ul class="movies-list  has-scrollbar">
-                    <li>
-                        <div class="movie-card">
-                            <a href="/app/Views/public/detail_buku.php">
-                                <figure class="card-banner">
-                                    <img src="/img/sampul/buku 1.png" alt="buku 1">
-                                </figure>
-                            </a>
-                            <div class="title-wrapper">
-                                <a href="/app/Views/public/detail_buku.php">
-                                    <h3 class="card-title">Judul Buku</h3>
+                    <?php foreach ($popular as $buku) : ?>
+                        <li>
+                            <div class="movie-card">
+                                <a href="detail/<?= $buku['id']; ?>">
+                                    <figure class="card-banner">
+                                        <img src="/img/sampul/<?= $buku['img_sampul']; ?>" alt="buku 1">
+                                    </figure>
                                 </a>
+                                <div class="title-wrapper">
+                                    <a href="detail/<?= $buku['id']; ?>">
+                                        <h3 class="card-title"><?= $buku['judul']; ?></h3>
+                                    </a>
+                                </div>
+                                <div class="card-meta">
+                                    <div class="badge badge-outline"><?= $buku['penulis']; ?></div>
+                                </div>
                             </div>
-                            <div class="card-meta">
-                                <div class="badge badge-outline">Penulis</div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="movie-card">
-                            <a href="./movie-details.html">
-                                <figure class="card-banner">
-                                    <img src="/img/sampul/buku 1.png" alt="buku 1">
-                                </figure>
-                            </a>
-                            <div class="title-wrapper">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Judul Buku</h3>
-                                </a>
-                            </div>
-                            <div class="card-meta">
-                                <div class="badge badge-outline">Penulis</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="movie-card">
-                            <a href="./movie-details.html">
-                                <figure class="card-banner">
-                                    <img src="/img/sampul/buku 1.png" alt="buku 1">
-                                </figure>
-                            </a>
-                            <div class="title-wrapper">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Judul Buku</h3>
-                                </a>
-                            </div>
-                            <div class="card-meta">
-                                <div class="badge badge-outline">Penulis</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="movie-card">
-                            <a href="./movie-details.html">
-                                <figure class="card-banner">
-                                    <img src="/img/sampul/buku 1.png" alt="buku 1">
-                                </figure>
-                            </a>
-                            <div class="title-wrapper">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Judul Buku</h3>
-                                </a>
-                            </div>
-                            <div class="card-meta">
-                                <div class="badge badge-outline">Penulis</div>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    <?php endforeach; ?>
 
                 </ul>
 
@@ -239,7 +176,16 @@
         </section>
 
 
+        <section class="top-rated" id="daftar">
+            <div class="container">
+                <h1 class="text-center"><i class="fa-solid fa-location-dot text-warning"></i></h1>
 
+                <h2 class="h2 section-title">Lokasi Kami</h2>
+
+                <div id="map"></div>
+
+            </div>
+        </section>
 
 
         <!-- 
@@ -253,163 +199,28 @@
 
                 <h2 class="h2 section-title">Daftar Buku</h2>
 
-                <ul class="filter-list">
-
-                    <li>
-                        <button class="filter-btn">1</button>
-                    </li>
-
-                    <li>
-                        <button class="filter-btn">2</button>
-                    </li>
-
-                    <li>
-                        <button class="filter-btn">3</button>
-                    </li>
-
-                    <li>
-                        <button class="filter-btn">4</button>
-                    </li>
-
-                </ul>
+                <?= $pager->links('daftar', 'custom'); ?>
 
                 <ul class="movies-list">
-                    <li>
-                        <div class="movie-card">
-                            <a href="./movie-details.html">
-                                <figure class="card-banner">
-                                    <img src="/img/sampul/buku 2.png" alt="buku ">
-                                </figure>
-                            </a>
-                            <div class="title-wrapper">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Judul Buku</h3>
+                    <?php foreach ($daftar_buku as $buku) : ?>
+                        <li>
+                            <div class="movie-card">
+                                <a href="/detail/<?= $buku['id']; ?>">
+                                    <figure class="card-banner">
+                                        <img src="/img/sampul/<?= $buku['img_sampul']; ?>" alt="buku ">
+                                    </figure>
                                 </a>
+                                <div class="title-wrapper">
+                                    <a href="/detail/<?= $buku['id']; ?>">
+                                        <h3 class="card-title"><?= $buku['judul']; ?></h3>
+                                    </a>
+                                </div>
+                                <div class="card-meta">
+                                    <div class="badge badge-outline"><?= $buku['penulis']; ?></div>
+                                </div>
                             </div>
-                            <div class="card-meta">
-                                <div class="badge badge-outline">Penulis</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="movie-card">
-                            <a href="./movie-details.html">
-                                <figure class="card-banner">
-                                    <img src="/img/sampul/buku 2.png" alt="buku ">
-                                </figure>
-                            </a>
-                            <div class="title-wrapper">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Judul Buku</h3>
-                                </a>
-                            </div>
-                            <div class="card-meta">
-                                <div class="badge badge-outline">Penulis</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="movie-card">
-                            <a href="./movie-details.html">
-                                <figure class="card-banner">
-                                    <img src="/img/sampul/buku 2.png" alt="buku ">
-                                </figure>
-                            </a>
-                            <div class="title-wrapper">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Judul Buku</h3>
-                                </a>
-                            </div>
-                            <div class="card-meta">
-                                <div class="badge badge-outline">Penulis</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="movie-card">
-                            <a href="./movie-details.html">
-                                <figure class="card-banner">
-                                    <img src="/img/sampul/buku 2.png" alt="buku ">
-                                </figure>
-                            </a>
-                            <div class="title-wrapper">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Judul Buku</h3>
-                                </a>
-                            </div>
-                            <div class="card-meta">
-                                <div class="badge badge-outline">Penulis</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="movie-card">
-                            <a href="./movie-details.html">
-                                <figure class="card-banner">
-                                    <img src="/img/sampul/buku 2.png" alt="buku ">
-                                </figure>
-                            </a>
-                            <div class="title-wrapper">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Judul Buku</h3>
-                                </a>
-                            </div>
-                            <div class="card-meta">
-                                <div class="badge badge-outline">Penulis</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="movie-card">
-                            <a href="./movie-details.html">
-                                <figure class="card-banner">
-                                    <img src="/img/sampul/buku 2.png" alt="buku ">
-                                </figure>
-                            </a>
-                            <div class="title-wrapper">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Judul Buku</h3>
-                                </a>
-                            </div>
-                            <div class="card-meta">
-                                <div class="badge badge-outline">Penulis</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="movie-card">
-                            <a href="./movie-details.html">
-                                <figure class="card-banner">
-                                    <img src="/img/sampul/buku 2.png" alt="buku ">
-                                </figure>
-                            </a>
-                            <div class="title-wrapper">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Judul Buku</h3>
-                                </a>
-                            </div>
-                            <div class="card-meta">
-                                <div class="badge badge-outline">Penulis</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="movie-card">
-                            <a href="./movie-details.html">
-                                <figure class="card-banner">
-                                    <img src="/img/sampul/buku 2.png" alt="buku ">
-                                </figure>
-                            </a>
-                            <div class="title-wrapper">
-                                <a href="./movie-details.html">
-                                    <h3 class="card-title">Judul Buku</h3>
-                                </a>
-                            </div>
-                            <div class="card-meta">
-                                <div class="badge badge-outline">Penulis</div>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
 
             </div>
@@ -559,22 +370,39 @@
             <div class="container">
 
                 <div class="title-wrapper">
-                    <h2 class="cta-title">Join Membership Sekarang</h2>
+                    <h2 class="cta-title text-center">Join Membership Sekarang</h2>
 
-                    <p class="cta-text">
-                        Masukan Email Kalian untuk menjadi Membership
+                    <p class="cta-text text-center">
+                        Hubungi kami melalui email yang tertera di profil kami
                     </p>
                 </div>
 
-                <form action="" class="cta-form">
-                    <input type="email" name="email" required placeholder="Enter your email" class="email-field">
-
-                    <button type="submit" class="cta-form-btn">Get started</button>
-                </form>
 
             </div>
         </section>
 
     </article>
 </main>
+
+<script>
+    function initMap() {
+        // The location of Uluru
+        const uluru = {
+            lat: -6.3232926,
+            lng: 107.3041507
+        };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15,
+            center: uluru,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+            position: uluru,
+            map: map,
+        });
+    }
+
+    window.initMap = initMap;
+</script>
 <?= $this->endSection() ?>

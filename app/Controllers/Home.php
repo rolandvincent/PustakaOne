@@ -2,31 +2,41 @@
 
 namespace App\Controllers;
 
+use App\Models\BukuModel;
 use CodeIgniter\HTTP\Response;
 
 class Home extends BaseController
 {
+    protected $bukuModel;
+    public function __construct()
+    {
+        $this->bukuModel = new BukuModel();
+    }
     public function index()
     {
         $data = [
             "title" => "Beranda",
-            "menu_select" => 1
+            "popular" => $this->bukuModel->findAll(4),
+            "daftar_buku" => $this->bukuModel->paginate(8, "daftar"),
+            "pager" => $this->bukuModel->pager
         ];
         return view('public/index', $data);
     }
     public function cari()
     {
+        $search = $this->request->getGet('s') ?: "";
+
         $data = [
             "title" => "Hasil Cari",
-            "menu_select" => 1
+            "hasil" => $this->bukuModel->like('judul', $search)->findAll()
         ];
         return view('public/search', $data);
     }
-    public function detail()
+    public function detail($id)
     {
         $data = [
             "title" => "Detail Buku",
-            "menu_select" => 1
+            "buku" => $this->bukuModel->find($id)
         ];
         return view('public/detail_buku', $data);
     }

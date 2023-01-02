@@ -985,7 +985,7 @@ body.active { overflow: hidden; }
 .play-btn:hover { background: hsla(0, 0%, 0%, 0.25); }
 
 .detail-subtitle {
-  font-size: var(--fs-5);
+  font-size: var(--fs-7);
   color: var(--citrine);
   font-weight: var(--fw-700);
   margin-bottom: 10px;
@@ -1585,7 +1585,7 @@ body.active { overflow: hidden; }
 
   .movie-detail { padding-bottom: var(--section-padding); }
 
-  .movie-detail-content { max-width: 620px; }
+  .movie-detail-content { width: 100%;}
 
   .detail-title { --fs-1: 60px; }
 

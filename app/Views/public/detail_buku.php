@@ -13,21 +13,21 @@
       <div class="container">
 
         <figure class="movie-detail-banner">
-          <img src="/img/sampul/buku 5.png" alt="detail buku">
+          <img src="/img/sampul/<?= $buku['img_sampul']; ?>" alt="detail buku">
         </figure>
 
         <div class="movie-detail-content">
 
-          <p class="detail-subtitle">Judul Buku</p>
+          <p class="detail-subtitle"><?= $buku['penulis']; ?></p>
 
           <h1 class="h1 detail-title">
-            Nama <strong>Penulis</strong>
+            <?= $buku['judul']; ?>
           </h1>
 
           <div class="meta-wrapper">
 
             <div class="badge-wrapper">
-              <div class="badge badge-fill">Tersedia</div>
+              <div class="badge badge-fill"><?= $buku['count'] > 0 ? "Tersedia" : "Tidak Tersedia"; ?></div>
 
               <div class="badge badge-outline"></div>
             </div>
@@ -45,24 +45,28 @@
 
           <div class="storyline">
             <div class="row">
-              <div class="label col-6">Judul Seri</div>
-              <div class="label col-6">: null</div>
+              <div class="label col-2">Penerbit</div>
+              <div class="label col-6">: <?= $buku['penerbit'] ?: '-'; ?></div>
             </div>
             <div class="row">
-              <div class="label col-6">Penerbit</div>
-              <div class="label col-6">: null</div>
+              <div class="label col-2">Kota Terbit</div>
+              <div class="label col-6">: <?= $buku['kota_terbit'] ?: '-'; ?></div>
             </div>
             <div class="row">
-              <div class="label col-6">Kota Terbit</div>
-              <div class="label col-6">: null</div>
+              <div class="label col-2">Bahasa</div>
+              <div class="label col-6">: <?= $buku['bahasa'] ?: '-'; ?></div>
             </div>
             <div class="row">
-              <div class="label col-6">Bahasa</div>
-              <div class="label col-6">: null</div>
+              <div class="label col-2">ISBN/ISSN</div>
+              <div class="label col-6">: <?= $buku['ISBN_ISSN'] ?: '-'; ?></div>
             </div>
             <div class="row">
-              <div class="label col-6">ISBN/ISSN</div>
-              <div class="label col-6">: null</div>
+              <div class="label col-2">Edisi</div>
+              <div class="label col-6">: <?= $buku['edisi'] ?: '-'; ?></div>
+            </div>
+            <div class="row">
+              <div class="label col-2">Subyek</div>
+              <div class="label col-6">: <?= $buku['subyek'] ?: '-'; ?></div>
             </div>
           </div>
         </div>

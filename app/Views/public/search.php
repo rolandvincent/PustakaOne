@@ -21,54 +21,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="align-middle"><img src="/img/sampul/buku 1.png" alt="buku 1"></td>
-                    <td class="align-middle">Kimia Organik</td>
-                    <td class="align-middle">Ralph J Fessenden</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">Indonesia</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">1</td>
-                    <td class="align-middle">Farmasi</td>
-                </tr>
-                <tr>
-                    <td class="align-middle"><img src="/img/sampul/buku 2.png" alt="buku 2"></td>
-                    <td class="align-middle">Kimia Organik</td>
-                    <td class="align-middle">Ralph J Fessenden</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">Indonesia</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">1</td>
-                    <td class="align-middle">Farmasi</td>
-                </tr>
-                <tr>
-                    <td class="align-middle"><img src="/img/sampul/buku 3.png" alt="buku 3"></td>
-                    <td class="align-middle">Kimia Organik</td>
-                    <td class="align-middle">Ralph J Fessenden</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">Indonesia</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">1</td>
-                    <td class="align-middle">Farmasi</td>
-                </tr>
-                <tr>
-                    <td class="align-middle"><img src="/img/sampul/buku 4.png" alt="buku 4"></td>
-                    <td class="align-middle">Kimia Organik</td>
-                    <td class="align-middle">Ralph J Fessenden</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">Indonesia</td>
-                    <td class="align-middle">null</td>
-                    <td class="align-middle">1</td>
-                    <td class="align-middle">Farmasi</td>
-                </tr>
+                <?php foreach ($hasil as $h) : ?>
+                    <tr>
+                        <td class="align-middle"><img src="/img/sampul/<?= $h['img_sampul']; ?>" alt="buku 1"></td>
+                        <td class="align-middle"><?= $h['judul']; ?></td>
+                        <td class="align-middle"><?= $h['penulis']; ?></td>
+                        <td class="align-middle"><?= $h['penerbit']; ?></td>
+                        <td class="align-middle"><?= $h['tahun_terbit']; ?></td>
+                        <td class="align-middle"><?= $h['kota_terbit']; ?></td>
+                        <td class="align-middle"><?= $h['bahasa']; ?></td>
+                        <td class="align-middle"><?= $h['ISBN_ISSN']; ?></td>
+                        <td class="align-middle"><?= $h['edisi']; ?></td>
+                        <td class="align-middle"><?= $h['subyek']; ?></td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
